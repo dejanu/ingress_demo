@@ -25,4 +25,3 @@ spec:
                 name: goapp-svc
                 port:
                   number: 8082
-
