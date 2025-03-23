@@ -18,7 +18,10 @@ Once your services have been established in Kubernetes, you likely want to get e
 
 Ingress manages manages external access to the services, it can provide load balancing, SSL termination and name-based virtual hosting.
 
-You will need to have in your cluster first and Ingress controller and only afterwards you can createa a Ingress resource. Ingress resources are used to expose HTTP and HTTPS routes from outside the cluster to services within the cluster.  Traffic routing is controlled by rules defined on the Ingress resource. An Ingress controller is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.
+You will need to have in your cluster first and Ingress controller and only afterwards you can createa a Ingress resource. Ingress resources are used to expose HTTP and HTTPS routes from outside the cluster to services within the cluster.  
+
+An Ingress CONTROLLER is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.
+Traffic routing is controlled by rules defined on the Ingress resource. 
 
 **A ingress resource without a ingress controller has no effect.**
 We need a Ingress CONTROLLER (i.e. NGNIX ingress controller) and a Ingress OBJECT (Routing Rules)
@@ -90,6 +93,8 @@ curl pythonapp-svc.default.svc.cluster.local:8081
 curl goapp-svc.default.svc.cluster.local:8082
 
 # install ingress controller
+kubectl apply -f ingress_controller.yaml
+# create ingress resource
 kubectl apply -f ingress_for_apps.yaml
 
 # test setup
